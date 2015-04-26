@@ -99,30 +99,37 @@ tm.define("GameScene", {
             this.score++;
             // 正解音を再生
             SoundManager.play('correct_se');
-
-            // 問題がまだあるかを判定
-            if (this.questions.length <= 0) {
-                // リザルトシーンへ
-                this.nextArguments = {
-                    score: this.score,
-                }
-                this.app.popScene();
-            }
-            else {
-                // 次の問題をセット
-                this.setQuestion();
-            }
         }
         else {
-            this.score--;
             // 不正解音を再生
             SoundManager.play('incorrect_se');
+        }
+        
+        // スコアを更新
+        this.scoreLabel.text = this.score;
 
+        // 問題がまだあるかを判定
+        if (this.questions.length <= 0) {
+            // リザルト画面へ
+            this.gotoResult();
+        }
+        else {
             // 次の問題をセット
             this.setQuestion();
         }
 
-        // スコアを更新
-        this.scoreLabel.text = this.score;
+    },
+
+    gotoResult: function() {
+        // リザルトシーンへ
+        this.nextArguments = {
+            score: this.score,
+        }
+        this.app.popScene();
+
+        // スコアを送信
+        gspread.post('yesno_quiz', {
+            score: this.score,
+        });
     },
 });
