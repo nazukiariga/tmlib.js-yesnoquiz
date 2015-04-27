@@ -17,6 +17,7 @@
 		var data = {
 			'sheetName': sheetName,
 			'id': this.getUserId(),
+			'date': (new Date()).format('Y/m/d H:i:m'),
 		};
 		data.$extend(values);
 
