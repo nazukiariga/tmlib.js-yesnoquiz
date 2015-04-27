@@ -128,7 +128,7 @@ tm.define("GameScene", {
         this.app.popScene();
 
         // スコアを送信
-        gspread.post('yesno_quiz', {
+        gspread.post(SHEET_NAME, {
             score: this.score,
         });
     },

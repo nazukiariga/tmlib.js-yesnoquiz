@@ -37,3 +37,8 @@ var QUESTIONS = [
         answer: true,
     },
 ];
+
+// シート名
+var SHEET_NAME = 'yesno_quiz';
+
+
