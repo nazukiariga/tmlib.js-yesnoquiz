@@ -33,7 +33,7 @@ var QUESTIONS = [
         answer: false,
     },
     {
-        text: '地上で働いているアリは、\nおばあさんアリである。',
+        text: '地上で働いているアリは、\n働きアリである。',
         answer: true,
     },
 ];
